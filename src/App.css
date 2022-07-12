@@ -1,38 +1,115 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap");
+
+.title > h2 {
+  align-self: baseline;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.title {
   text-align: center;
+  background-color: #f5f0bb;
+  border-radius: 1rem;
+  width: 50%;
+  margin: auto;
+}
+span {
+  display: block;
+  font-size: 3rem;
+}
+p {
+  text-align: center;
+  font-weight: 100;
+  margin: 2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+hr {
+  width: 80%;
+  height: 0.085em;
+  background-color: #6d8299;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* buttons */
+.button-container {
+  width: fit-content;
   display: flex;
-  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  justify-content: space-between;
+  align-content: center;
+  padding: 1rem;
+}
+/* css to beautify the button on the app */
+.button-container > button {
+  margin-right: 1.5rem;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-container > button:after {
+  content: "";
+  background-color: #f9f9c5;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.button-container > button:hover:after {
+  top: 0px;
+  left: 0px;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+ul > li {
+  list-style: none;
+  font-family: "Noto Sans", sans-serif;
+}
+.content-container {
+  text-align: left;
+  display: flex;
+  margin: auto;
+
+  border: "10px solid red";
+  width: 70%;
+  padding: 0.5;
+
+  margin-bottom: 1rem;
+
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.content-container > * {
+  margin-right: 1rem;
+}
+.movi-image {
+  display: none;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media screen and (min-width: 625px) {
+  .movi-image {
+    display: inline;
   }
 }
