@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap");
+/* for adding scrollbar functionality without ugly appearance */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+h3 {
+  text-align: center;
+  font-weight: 200;
+  margin: 1rem;
+  padding: 0.4rem;
+}
 
 .title > h2 {
   align-self: baseline;
@@ -82,6 +93,9 @@ li {
 ul > li {
   list-style: none;
   font-family: "Noto Sans", sans-serif;
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 0.4rem;
 }
 .content-container {
   text-align: left;

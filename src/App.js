@@ -4,6 +4,7 @@ import moviesData from "./movieData.json";
 
 function App() {
   const [series, setSeries] = useState([]);
+
   const movieArray = moviesData;
   function seriesSorter() {
     const seriesData = movieArray.filter((s) => s.Type === "series");
@@ -18,10 +19,10 @@ function App() {
     <div className="App">
       <header className="title">
         <h2>
-          <span> 🎥</span>Movie Recommendation
+          <span> 🎥</span>Movie & Series Recommendation
         </h2>{" "}
       </header>
-      <p> A random list all shows and movies</p>
+      <p> My recommended shows and movies</p>
       <hr></hr>
 
       <section className="button-container">
@@ -30,18 +31,26 @@ function App() {
       </section>
       {/* list of all the suggested movies/ series */}
       <section>
-        <ul>
-          {series.map((item) => (
-            <li key={item.name}>
-              <div className="content-container">
-                <img className="movi-image" src={item.Images[1]} alt=""></img>
-                <h3>{item.Title}</h3>
-                <p>release date {item.Released}</p>
-                <h5>{item.Genre}</h5>
-              </div>
-            </li>
-          ))}
-        </ul>
+        {series.length == 0 ? (
+          <h3>click to see recommended movie or series</h3>
+        ) : (
+          <ul>
+            {series.map((item) => (
+              <li key={item.name}>
+                <div className="content-container">
+                  <img
+                    className="movi-image"
+                    src={item.Images[1]}
+                    alt="movie-image"
+                  ></img>
+                  <h3>{item.Title}</h3>
+                  <p>release date {item.Released}</p>
+                  <h5>{item.Genre}</h5>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </div>
   );
