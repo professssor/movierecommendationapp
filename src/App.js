@@ -1,20 +1,38 @@
 import { useState } from "react";
 import "./App.css";
 import moviesData from "./movieData.json";
+import React from "react";
+import { FaTwitter, FaGithub } from "react-icons/fa";
 
 function App() {
   const [series, setSeries] = useState([]);
 
   const movieArray = moviesData;
+  // recommends few series
   function seriesSorter() {
     const seriesData = movieArray.filter((s) => s.Type === "series");
     setSeries(seriesData);
   }
-
+  // recommed few movies
   function movieSorter() {
     const movieData = movieArray.filter((m) => m.Type === "movie");
     setSeries(movieData);
   }
+  //
+  const findSimilar = (one, two) => {
+    one.forEach((element, index) => {
+      if (two.includes(element[index])) {
+        setSeries(element);
+      }
+    });
+  };
+
+  // recommend my fav 5 series/movies from the list shown
+  function mySuggestions() {
+    const favIndexArray = [0, 4, 6, 3, 11];
+    findSimilar(movieArray, favIndexArray);
+  }
+
   return (
     <div className="App">
       <header className="title">
@@ -28,6 +46,7 @@ function App() {
       <section className="button-container">
         <button onClick={seriesSorter}> series</button>
         <button onClick={movieSorter}> movie</button>
+        <button onClick={mySuggestions}>My top 5 </button>
       </section>
       {/* list of all the suggested movies/ series */}
       <section>
@@ -52,6 +71,21 @@ function App() {
           </ul>
         )}
       </section>
+      <footer>
+        <section className="footer-links">
+          {/* footer link */}
+          <a className="mx-4 text-xl" href="https://twitter.com/coderGent">
+            {" "}
+            <FaTwitter className="text-[1.5rem]" />
+          </a>
+
+          <a className="mx-4 " href="https://github.com/professssor/">
+            {" "}
+            <FaGithub className="text-[1.5rem]" />
+          </a>
+        </section>
+        <h6> © | 2022 | san</h6>
+      </footer>
     </div>
   );
 }
