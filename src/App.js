@@ -1,16 +1,19 @@
 import { useState } from "react";
 import "./App.css";
+import myfavfile from "./myfavfile.json";
 import moviesData from "./movieData.json";
 import React from "react";
 import { FaTwitter, FaGithub } from "react-icons/fa";
 
 function App() {
   const [series, setSeries] = useState([]);
+  const myfavArray = myfavfile;
 
   const movieArray = moviesData;
   // recommends few series
   function seriesSorter() {
     const seriesData = movieArray.filter((s) => s.Type === "series");
+
     setSeries(seriesData);
   }
   // recommed few movies
@@ -19,18 +22,11 @@ function App() {
     setSeries(movieData);
   }
   //
-  const findSimilar = (one, two) => {
-    one.forEach((element, index) => {
-      if (two.includes(element[index])) {
-        setSeries(element);
-      }
-    });
-  };
 
   // recommend my fav 5 series/movies from the list shown
   function mySuggestions() {
-    const favIndexArray = [0, 4, 6, 3, 11];
-    findSimilar(movieArray, favIndexArray);
+    const myfavList = myfavArray.map((list) => list);
+    setSeries(myfavList);
   }
 
   return (
